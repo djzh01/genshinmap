@@ -6,13 +6,15 @@ var scale = 1,
   start = { x: 0, y: 0 },
   zoom = document.getElementById("zoom");
 
+console.log(zoom.height);
+console.log(screen.height);
 function setTransform() {
   pointX = pointX > 0 ? 0:pointX;
   pointY = pointY > 0 ? 0:pointY;
   scale = scale < 1 ? 1 : scale;
   rightoffset = 10;
-  pointX = pointX < -(screen.width * scale - screen.width) ? -(screen.width * scale - screen.width)+rightoffset : pointX;
-  pointY = pointY < -(screen.height * scale - screen.height) ? -(screen.height * scale - screen.height)+rightoffset : pointY;
+  pointX = pointX < -(screen.width * scale - screen.width) ? -(screen.width * scale - screen.width) : pointX;
+  pointY = pointY < -(zoom.height * scale - screen.height) ? -(zoom.height * scale - screen.height) : pointY;
   zoom.style.transform = "translate(" + pointX + "px, " + pointY + "px) scale(" + scale + ")";
 }
 
