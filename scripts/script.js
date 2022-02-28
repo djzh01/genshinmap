@@ -13,7 +13,7 @@ function setTransform() {
   pointY = pointY > 0 ? 0:pointY;
   scale = scale < 1 ? 1 : scale;
   rightoffset = 10;
-  pointX = pointX < -(screen.width * scale - screen.width) ? -(screen.width * scale - screen.width) : pointX;
+  pointX = pointX < -(zoom.width * scale - screen.width) ? -(zoom.width * scale - screen.width) : pointX;
   pointY = pointY < -(zoom.height * scale - screen.height) ? -(zoom.height * scale - screen.height) : pointY;
   zoom.style.transform = "translate(" + pointX + "px, " + pointY + "px) scale(" + scale + ")";
 }
@@ -22,10 +22,13 @@ zoom.onmousedown = function (e) {
   e.preventDefault();
   start = { x: e.clientX - pointX, y: e.clientY - pointY };
   panning = true;
+  zoom.style.cursor = 'grab';
 }
 
 zoom.onmouseup = function (e) {
   panning = false;
+  zoom.style.cursor = 'revert';
+
 }
 
 zoom.onmousemove = function (e) {
@@ -43,7 +46,7 @@ zoom.onwheel = function (e) {
   var xs = (e.clientX - pointX) / scale,
     ys = (e.clientY - pointY) / scale,
     delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
-  (delta > 0) ? (scale *= 1.2) : (scale /= 1.2);
+  (delta > 0) ? (scale *= 1.1) : (scale /= 1.1);
   pointX = e.clientX - xs * scale;
   pointY = e.clientY - ys * scale;
   
