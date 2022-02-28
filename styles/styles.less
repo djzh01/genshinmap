@@ -143,7 +143,7 @@ body {
 }
 
 a {
-    color: white;
+    color          : white;
     text-decoration: none;
 }
 
@@ -197,21 +197,33 @@ a.btn-1 {
     left    : 44.5vw;
 }
 
-.navbar-brand {
-    padding-left: 1rem;
+.ml-1 {
+    margin-left: 1rem;
 }
 
 #profile {
     a {
-        color: rgba(255, 255, 255, 0.75);
+        color: rgba(255, 255, 255, 0.5);
     }
+
     a:hover {
-        color: white; 
+        color: rgba(255, 255, 255, 0.75);
     }
 
     img {
-        width: 2rem;
-        height: 2rem;
+        width : 1.5rem;
+        height: 1.5rem;
         margin: 0 0.5rem;
+    }
+
+    margin-left: auto;
+}
+
+@media only screen and (max-width: 991px) {
+    #profile {
+        margin-left: 0;
+    }
+    .navbar-nav {
+        margin-left: 1rem;
     }
 }
