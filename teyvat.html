@@ -17,86 +17,70 @@
 </head>
 
 <body>
-  <!-- 
-    <div class="bg-actual">-->
 
-
-  <!--<div class="zoom_outer">
-            <div id="zoom">
-              <img src="images/teyvatmap.png" alt="zoom">
-            </div>
-          </div>
-    
-    
-    </div>-->
-
-    <div id="map">
-      <div class="pos-f-t">
-        <nav style="z-index: 1;" class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <a class="navbar-brand ml-1" href="#">TEYVAT MAP</a>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav w-100">
-              <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  Teyvat
-                </a>
-                <ul id="teyvatDropdown" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="teyvat.html">
-                          <img src="images/Elements/Anemo.png">
-                          Mondstadt
-                          <img src="images/RegionIcons/Mondstadt.png">
-                      </a></li>
-                  <li><a class="dropdown-item" href="teyvat.html">
-                          <img src="images/Elements/Geo.png">
-                          Liyue
-                          <img src="images/RegionIcons/Liyue.png">
-                      </a></li>
-                  <li><a class="dropdown-item" href="teyvat.html">
-                          <img src="images/Elements/Electro.png">
-                          Inazuma
-                          <img src="images/RegionIcons/Inazuma.png">
-                      </a></li>
+  <div id="map">
+    <div class="pos-f-t">
+      <nav style="z-index: 1;" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand ml-1" href="#">TEYVAT MAP</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100">
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Teyvat
+              </a>
+              <ul id="teyvatDropdown" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="teyvat.html">
+                    <img src="images/Elements/Anemo.png" alt="Anemo Symbol">
+                    Mondstadt
+                    <img src="images/RegionIcons/Mondstadt.png" alt="Mondstadt">
+                  </a></li>
+                <li><a class="dropdown-item" href="teyvat.html">
+                    <img src="images/Elements/Geo.png" alt="Geo Symbol">
+                    Liyue
+                    <img src="images/RegionIcons/Liyue.png" alt="Liyue">
+                  </a></li>
+                <li><a class="dropdown-item" href="teyvat.html">
+                    <img src="images/Elements/Electro.png" alt="Electro Symbol">
+                    Inazuma
+                    <img src="images/RegionIcons/Inazuma.png" alt="Inazuma">
+                  </a></li>
               </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Enkanomiya</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Three Realms Gateway</a>
-              </li>
-              <li id="profile" class="nav-item">
-                <a class="nav-link" href="profile.html">
-                  <div class="d-flex align-items-center">
-                    <span>
-                      My Page
-                    </span>
-                    <img class="rounded-circle"
-                      src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Enkanomiya</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Three Realms Gateway</a>
+            </li>
+            <li id="profile" class="nav-item">
+              <a class="nav-link" href="profile.html">
+                <div class="d-flex align-items-center">
+                  <span>
+                    My Page
+                  </span>
+                  <img class="rounded-circle"
+                    src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Profile picture">
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
 
-        </nav>
+      </nav>
 
-      </div>
-      <img style="
+    </div>
+    <img style="
       background-position: center;
       background-repeat: no-repeat;
       background-size: fit;" id="zoom" src="images/teyvatmap.png" alt="Teyvat" />
 
-    </div>
+  </div>
 
-  <!-- <script src="scripts/wheelzoom.js"></script>
-<script>
-  wheelzoom(document.querySelector('img.zoom'));
-</script> -->
   <script src="scripts/script.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
