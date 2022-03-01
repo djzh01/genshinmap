@@ -75,19 +75,15 @@ zoom.ontouchstart = function (e) {
   console.log(e.touches[0])
   start = { x: e.touches[0].clientX - pointX, y: e.touches[0].clientY - pointY };
   panning = true;
-  zoom.style.cursor = 'grab';
 }
 
 zoom.ontouchend = function (e) {
-  console.log('hello');
 
   panning = false;
-  zoom.style.cursor = 'revert';
 
 }
 
 zoom.ontouchmove = function (e) {
-  console.log('hello');
 
   e.preventDefault();
   if (!panning) {
@@ -97,15 +93,3 @@ zoom.ontouchmove = function (e) {
   pointY = (e.touches[0].clientY - start.y);
   setTransform();
 }
-
-// zoom.onwheel = function (e) {
-//   e.preventDefault();
-//   var xs = (e.clientX - pointX) / scale,
-//     ys = (e.clientY - pointY) / scale,
-//     delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
-//   (delta > 0) ? (scale *= 1.1) : (scale /= 1.1);
-//   pointX = e.clientX - xs * scale;
-//   pointY = e.clientY - ys * scale;
-
-//   setTransform();
-// }

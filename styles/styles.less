@@ -151,19 +151,11 @@ a {
 .bg-main {
     background-image: url("../images/Teyvat.jpg");
 
-    height: 210vh;
+    height: 100%;
 
     background-position: center;
     background-repeat  : no-repeat;
-    background-size    : 100% 100%;
-
-}
-
-.bg-actual {
-    height             : 100vw;
-    background-position: center;
-    background-repeat  : no-repeat;
-    background-size    : fit;
+    background-size    : cover;
 
 }
 
@@ -173,17 +165,31 @@ a {
     background-color: rgba(0, 0, 0, 0.4);
     /* Black w/opacity/see-through */
     color           : white;
-    font-weight     : bold;
-    font-size       : 10vh;
+    text-decoration: none;
+    h1 {
+        font-weight     : bold;
+        font-size       : 5vh;
+        margin: 0;
+    }
+    p {
+        margin: 0;
+        font-size : 2vh;
+    }
+    
     border          : 1.5vh solid #f1f1f1;
     position        : fixed;
     top             : 50vh;
     left            : 50vw;
     transform       : translate(-50%, -50%);
     z-index         : 2;
-    width           : 60vh;
+    width           : 60vw;
     padding         : 2vh;
     text-align      : center;
+    transition: background-color 0.2s linear;
+}
+.bg-text:hover{
+    background-color: rgba(0, 0, 0, 0.7);
+    color           : white;
 }
 
 a.btn-start {
