@@ -1,4 +1,6 @@
 //https://dev.to/stackfindover/zoom-image-point-with-mouse-wheel-11n3
+// Authors: George Cao and Daniel Zhao
+
 var scale = 1,
   min_scale = 1,
   panning = false,
