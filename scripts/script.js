@@ -1,20 +1,18 @@
 //https://dev.to/stackfindover/zoom-image-point-with-mouse-wheel-11n3
 var scale = 1,
-  min_scale = 0,
+  min_scale = 1,
   panning = false,
   pointX = 0,
   pointY = 0,
   start = { x: 0, y: 0 },
   zoom = document.getElementById("zoom");
+  navbarOffset = 56;
 
 function scaleMap() {
   var zoom = document.getElementById("zoom");
 
   if (screen.height > screen.width) {
     min_scale = screen.height / screen.width * (zoom.width / zoom.height);
-  }
-  else {
-    min_scale = screen.width / screen.height * (zoom.height / zoom.width);
   }
 
   zoom.style.transform = "translate(0px,0px) scale(" + min_scale + ")";
@@ -28,7 +26,7 @@ function setTransform() {
   scale = scale < min_scale ? min_scale : scale;
 
   pointX = pointX < -(zoom.width * scale - screen.width) ? -(zoom.width * scale - screen.width) : pointX;
-  pointY = pointY < -(zoom.height * scale - screen.height) ? -(zoom.height * scale - screen.height) : pointY;
+  pointY = pointY < -(zoom.height * scale - screen.height + navbarOffset) ? -(zoom.height * scale - screen.height + navbarOffset) : pointY;
 
   zoom.style.transform = "translate(" + pointX + "px, " + pointY + "px) scale(" + scale + ")";
   console.log(scale);
