@@ -7,17 +7,19 @@ var scale = 1,
   pointX = 0,
   pointY = 0,
   start = { x: 0, y: 0 },
-  zoom = document.getElementById("zoom");
+  backdrop = document.getElementById("zoom");
+  img = document.getElementById("zoom-img");
   navbarOffset = 56;
+  mouseDown = false;
 
 function scaleMap() {
-  var zoom = document.getElementById("zoom");
+  // var zoom = document.getElementById("zoom");
 
-  if (screen.height > screen.width) {
-    min_scale = screen.height / screen.width * (zoom.width / zoom.height);
+  if (window.innerHeight > window.innerWidth) {
+    min_scale = window.innerHeight / window.innerWidth * (img.width / img.height);
   }
 
-  zoom.style.transform = "translate(0px,0px) scale(" + min_scale + ")";
+  backdrop.style.transform = "translate(0px,0px) scale(" + min_scale + ")";
   console.log(min_scale);
 }
 window.onload = scaleMap;
@@ -27,37 +29,54 @@ function setTransform() {
   pointY = pointY > 0 ? 0 : pointY;
   scale = scale < min_scale ? min_scale : scale;
 
-  pointX = pointX < -(zoom.width * scale - screen.width) ? -(zoom.width * scale - screen.width) : pointX;
-  pointY = pointY < -(zoom.height * scale - screen.height + navbarOffset) ? -(zoom.height * scale - screen.height + navbarOffset) : pointY;
+  pointX = pointX < -(img.width * scale - window.innerWidth) ? -(img.width * scale - window.innerWidth) : pointX;
+  pointY = pointY < -(img.height * scale - window.innerHeight + navbarOffset) ? -(img.height * scale - window.innerHeight + navbarOffset) : pointY;
 
-  zoom.style.transform = "translate(" + pointX + "px, " + pointY + "px) scale(" + scale + ")";
+  backdrop.style.transform = "translate(" + pointX + "px, " + pointY + "px) scale(" + scale + ")";
   console.log(scale);
 }
 
-zoom.onmousedown = function (e) {
+window.onresize = function (e) {
+  // console.log("window resized");
+  scale = 1;
+  scaleMap(); //reset the map scale to fit the new window size automatically
+}
+
+backdrop.onmousedown = function (e) {
   e.preventDefault();
+  mouseDown = true;
   start = { x: e.clientX - pointX, y: e.clientY - pointY };
   panning = true;
-  zoom.style.cursor = 'grab';
+  backdrop.style.cursor = 'grab';
 }
 
-zoom.onmouseup = function (e) {
+backdrop.onmouseup = function (e) {
+  mouseDown = false;
   panning = false;
-  zoom.style.cursor = 'revert';
-
+  backdrop.style.cursor = 'revert';
 }
 
-zoom.onmousemove = function (e) {
+backdrop.onmousemove = function (e) {
   e.preventDefault();
   if (!panning) {
     return;
   }
-  pointX = (e.clientX - start.x);
-  pointY = (e.clientY - start.y);
-  setTransform();
+  if(mouseDown){
+    pointX = (e.clientX - start.x);
+    pointY = (e.clientY - start.y);
+    setTransform();
+  }
+  console.log(e.clientX, e.clientY);
 }
 
-zoom.onwheel = function (e) {
+backdrop.onmouseout = function (e) {
+  if(mouseDown){
+    panning = false;
+    backdrop.style.cursor = 'revert';
+  }
+}
+
+backdrop.onwheel = function (e) {
 
   e.preventDefault();
   var xs = (e.clientX - pointX) / scale,
@@ -72,20 +91,20 @@ zoom.onwheel = function (e) {
 
 // Touch Screen Controls
 
-zoom.ontouchstart = function (e) {
+backdrop.ontouchstart = function (e) {
   e.preventDefault();
   console.log(e.touches[0])
   start = { x: e.touches[0].clientX - pointX, y: e.touches[0].clientY - pointY };
   panning = true;
 }
 
-zoom.ontouchend = function (e) {
+backdrop.ontouchend = function (e) {
 
   panning = false;
 
 }
 
-zoom.ontouchmove = function (e) {
+backdrop.ontouchmove = function (e) {
 
   e.preventDefault();
   if (!panning) {
