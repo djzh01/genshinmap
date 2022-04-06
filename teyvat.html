@@ -9,6 +9,7 @@
   <meta name="author" content="George Cao and Daniel Zhao">
   <meta name="description" content="Genshin Impact Archive">
   <meta name="keywords" content="Genshin Impact World Map Lore Archive Items">
+  <link rel="stylesheet/less" type="text/css" href="styles/sidebar.less" />
   <link rel="stylesheet/less" type="text/css" href="styles/styles.less" />
   <link rel="stylesheet/less" type="text/css" href="styles/map.less" />
   <script src="https://cdn.jsdelivr.net/npm/less@4"></script>
@@ -73,11 +74,78 @@
         </div>
 
       </nav>
+      <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Bootstrap Sidebar</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Dummy Heading</p>
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="#">Home 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Home 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div id="overlay" onclick="off()">
+                    <br>
+                    <iframe src="./profile.html" onload="this.width=screen.width;this.height=screen.height;"></iframe>
+                </div>
+                <div id="overlay"></div>
+                                
+                <button onclick="on()">Turn on overlay effect</button>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="#">Page 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Portfolio</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled CTAs">
+            <li>
+                <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+            </li>
+            <li>
+                <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+            </li>
+        </ul>
+    </nav>
 
     </div>
     <div id="zoom">
       <ul class="region-buttons">
-        <li id="mondstadt-btn"><button><img src="images/RegionIcons/Mondstadt.png"/></button></li>
+        <button type="button" id="mondstadt-btn" class="btn buttonround">
+          <img src="images/RegionIcons/Mondstadt.png"/></button>
+
+        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-align-justify"></i>
+        </button>
+        <!-- <li id="mondstadt-btn"><button><img src="images/RegionIcons/Mondstadt.png"/></button></li> -->
         <li id="liyue-btn"><button><img src="images/RegionIcons/Liyue.png"/></button></li>
         <li id="inazuma-btn"><button><img src="images/RegionIcons/Inazuma.png"/></button></li>
       </ul>
@@ -88,6 +156,7 @@
   </div>
 
   <script src="scripts/script.js"></script>
+  <script src="scripts/sidebar.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
