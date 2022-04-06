@@ -44,6 +44,12 @@ class FinanceController {
 
     private function login() {
         $error_msg = "?";
+
+        if(isset($_SESSION['id'])){
+            header("Location: ?command=transaction");
+        exit;
+}
+
         if (isset($_POST["email"])) {
             $data = $this->db->query("select * from genshin_user where email = ?;", "s", $_POST["email"]);
             if ($data === false) {

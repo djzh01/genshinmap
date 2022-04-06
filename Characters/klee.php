@@ -25,8 +25,12 @@
         <h1 style="text-align: center; " class="center">ANDY's FAVORITE CHARACTERRRRRETARD</h1>
         <a href="#">
             <img src="https://www.pockettactics.com/wp-content/uploads/2021/02/genshin-impact-klee-3.jpg"
-                alt="bookmark">
+                alt="bookmark" style="border-radius: 50%; height: 50vh; width: 35vw"/>
             <p class="text-center">Klee</p>
+        </a>
+
+        <a href="#">
+            <img src="https://static.wikia.nocookie.net/gensin-impact/images/2/20/Talent_Tempered_Sword_Charged.gif" alt="this slowpoke moves"  width="250" />                
         </a>
 
 
