@@ -21,7 +21,7 @@
 
   <div id="map">
     <div class="pos-f-t">
-      <nav style="z-index: 1;" class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav style="z-index: 10;" class="navbar navbar-expand-lg navbar-dark bg-dark">
         <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -59,10 +59,10 @@
               <a class="nav-link" href="#">Three Realms Gateway</a>
             </li>
             <li id="profile" class="nav-item">
-              <a class="nav-link" href="profile.html">
+              <a class="nav-link" href="loginindex.php">
                 <div class="d-flex align-items-center">
                   <span>
-                    My Page
+                    My Profile
                   </span>
 
                   <img class="rounded-circle"
@@ -74,75 +74,44 @@
         </div>
 
       </nav>
-      <nav id="sidebar" class="active">
-        <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
+
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <li>
+        <div id="overlay" onclick="off()">
+            <br>
+            <iframe src="./Characters/klee.php" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
         </div>
-
-        <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <div id="overlay" onclick="off()">
-                    <br>
-                    <iframe src="./profile.html" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
-                </div>
-                <div id="overlay"></div>
-                                
-                <button onclick="on()">Turn on overlay effect</button>
-            </li>
-            <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Portfolio</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
-
-        <ul class="list-unstyled CTAs">
-            <li>
-                <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-            </li>
-            <li>
-                <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-            </li>
-        </ul>
-    </nav>
-
+        <div id="overlay"></div>
+                        
+        <button onclick="on()">Turn on overlay effect</button>
+      </li>
+      <li>
+        <div id="overlay" onclick="off()">
+            <br>
+            <iframe src="./profile.html" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
+        </div>
+        <div id="overlay"></div>
+                        
+        <button onclick="on()">Turn on overlay effect</button>
+    </li>
+    </div>
+    
+    
     </div>
     <div id="zoom">
-      <div id="region-buttons" class="region-buttons">
-        <button id="mondstadt-btn"><img src="images/RegionIcons/Mondstadt.png"/></button>
-        <button id="liyue-btn"><img src="images/RegionIcons/Liyue.png"/></button>
-        <button id="inazuma-btn"><img src="images/RegionIcons/Inazuma.png"/></button>
-      </div>
+      <ul class="region-buttons">
+        <button id="mondstadt-btn" class="btn buttonround" onclick="openNav()"><img src="images/RegionIcons/Mondstadt.png"/></button>
+  
+        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-align-justify"></i>
+        </button>
+        <!-- <li id="mondstadt-btn"><button><img src="images/RegionIcons/Mondstadt.png"/></button></li> -->
+        <li id="liyue-btn"><button><img src="images/RegionIcons/Liyue.png"/></button></li>
+        <li id="inazuma-btn"><button><img src="images/RegionIcons/Inazuma.png"/></button></li>
+      </ul>
       <img id="zoom-img" src="images/teyvatmap.png" alt="Teyvat" />
     </div>
     
