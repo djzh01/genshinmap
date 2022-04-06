@@ -25,7 +25,7 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand ml-1" href="#">TEYVAT MAP</a>
+            <a class="navbar-brand ml-1" href="teyvat.html">TEYVAT MAP</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav w-100">
                     <li class="nav-item dropdown active">
@@ -84,7 +84,7 @@
                         src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
                         alt="Profile picture">
                     <span class="font-weight-bold">
-                        Andal
+                        <?=$_SESSION["username"]?>
                     </span>
                     <span>
                         <label>Change Username</label><input type="text" name="username" class="form-control" value=""
