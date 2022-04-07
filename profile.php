@@ -55,7 +55,7 @@ if (!isset($_SESSION["email"])) {
                     </li>
                     <li>
                         <a href="#">
-                            <img src="https://progameguides.com/wp-content/uploads/2021/07/Genshin-Impact-Character-Raiden-Shogun-1-768x803.jpg" alt="bookmark">
+                            <img src="https://img.gamewith.net/article/thumbnail/rectangle/22351.png" alt="bookmark">
                             <p class="text-center">Raiden Shogun</p>
                         </a>
                     </li>
