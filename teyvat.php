@@ -82,11 +82,12 @@
       <li>
         <div id="overlay" onclick="off()">
             <br>
-            <iframe src="./Characters/klee.php" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
+            <iframe src="./Characters.php" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
         </div>
         <div id="overlay"></div>
-                        
-        <button onclick="on()">Turn on overlay effect</button>
+        
+        <button onclick="on()" type="submit">Dilucc</button>
+
       </li>
       <li>
         <div id="overlay" onclick="off()">
