@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["email"])){
+if (!isset($_SESSION["email"])) {
     header("Location: login.php");
 }
 ?>
@@ -27,16 +27,14 @@ if(!isset($_SESSION["email"])){
 
     <div class="pos-f-t">
         <nav style="z-index: 1;" class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand ml-1" href="teyvat.php">TEYVAT MAP</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav w-100">
                     <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Teyvat
                         </a>
                         <ul id="teyvatDropdown" class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -63,15 +61,18 @@ if(!isset($_SESSION["email"])){
                     <li class="nav-item">
                         <a class="nav-link" href="#">Three Realms Gateway</a>
                     </li>
-                    <li id="profile" class="nav-item">
-                        <a class="nav-link" href="profile.html">
+                    <?php
+                    if (isset($_SESSION["email"])) {
+                        echo "<li id='logout'><a class='nav-link' href='logout.php'>Logout</a></li>";
+                    }
+                    ?>
+                    <li id="profile" class="nav-item" style="<?php echo isset($_SESSION["email"]) ? "" : "margin-left: auto;" ?>">
+                        <a class="nav-link" href="profile.php">
                             <div class="d-flex align-items-center">
                                 <span>
-                                    My Page
+                                    My Profile
                                 </span>
-                                <img class="rounded-circle"
-                                    src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-                                    alt="Profile Picture">
+                                <img class="rounded-circle" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Profile picture">
                             </div>
                         </a>
                     </li>
@@ -86,15 +87,12 @@ if(!isset($_SESSION["email"])){
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="rounded-circle mt-5" width="150px"
-                        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-                        alt="Profile picture">
+                    <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Profile picture">
                     <span class="font-weight-bold">
-                        <?=$_SESSION["username"]?>
+                        <?= $_SESSION["username"] ?>
                     </span>
                     <span>
-                        <label>Change Username</label><input type="text" name="username" class="form-control" value=""
-                            placeholder="username">
+                        <label>Change Username</label><input type="text" name="username" class="form-control" value="" placeholder="username">
                     </span>
                 </div>
             </div>
@@ -111,37 +109,32 @@ if(!isset($_SESSION["email"])){
                     </li>
                     <li>
                         <a href="#">
-                            <img src="https://progameguides.com/wp-content/uploads/2021/07/Genshin-Impact-Character-Raiden-Shogun-1-768x803.jpg"
-                                alt="bookmark">
+                            <img src="https://progameguides.com/wp-content/uploads/2021/07/Genshin-Impact-Character-Raiden-Shogun-1-768x803.jpg" alt="bookmark">
                             <p class="text-center">Raiden Shogun</p>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="https://www.pockettactics.com/wp-content/uploads/2021/02/genshin-impact-klee-3.jpg"
-                                alt="bookmark">
+                            <img src="https://www.pockettactics.com/wp-content/uploads/2021/02/genshin-impact-klee-3.jpg" alt="bookmark">
                             <p class="text-center">Klee</p>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="https://www.pockettactics.com/wp-content/uploads/2021/02/genshin-impact-klee-3.jpg"
-                                alt="bookmark">
+                            <img src="https://www.pockettactics.com/wp-content/uploads/2021/02/genshin-impact-klee-3.jpg" alt="bookmark">
                             <p class="text-center">Klee</p>
                         </a>
                     </li>
 
                     <li>
                         <a href="#">
-                            <img src="https://www.pockettactics.com/wp-content/uploads/2021/02/genshin-impact-klee-3.jpg"
-                                alt="bookmark">
+                            <img src="https://www.pockettactics.com/wp-content/uploads/2021/02/genshin-impact-klee-3.jpg" alt="bookmark">
                             <p class="text-center">Klee</p>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="https://www.pockettactics.com/wp-content/uploads/2021/02/genshin-impact-klee-3.jpg"
-                                alt="bookmark">
+                            <img src="https://www.pockettactics.com/wp-content/uploads/2021/02/genshin-impact-klee-3.jpg" alt="bookmark">
                             <p class="text-center">Klee</p>
                         </a>
                     </li>
@@ -168,15 +161,9 @@ if(!isset($_SESSION["email"])){
         </div>
 
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

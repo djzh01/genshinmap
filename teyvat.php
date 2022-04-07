@@ -58,10 +58,13 @@ session_start();
             <li class="nav-item">
               <a class="nav-link" href="enkanomiya.html">Enkanomiya</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Three Realms Gateway</a>
-            </li>
-            <li id="profile" class="nav-item">
+            <?php
+              if(isset($_SESSION["email"])){
+                echo "<li id='logout'><a class='nav-link' href='logout.php'>Logout</a></li>";
+              }
+            ?>
+            
+            <li id="profile" class="nav-item" style="<?php echo isset($_SESSION["email"]) ? "" : "margin-left: auto;"?>">
               <a class="nav-link" href="profile.php">
                 <div class="d-flex align-items-center">
                   <span>
