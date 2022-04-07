@@ -25,7 +25,7 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand ml-1" href="teyvat.html">TEYVAT MAP</a>
+            <a class="navbar-brand ml-1" href="teyvat.php">TEYVAT MAP</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav w-100">
                     <li class="nav-item dropdown active">

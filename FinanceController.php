@@ -29,6 +29,9 @@ class FinanceController {
             case "addtransaction":
                 $this->addTransaction();
                 break;
+            case "setEntity":
+                $this->setEntity();
+                break;
             case "logout":
                 $this->destroySession();
             case "login":
@@ -116,6 +119,14 @@ class FinanceController {
 
 
         include("profile.php");
+    }
+    private function setEntity() {
+        echo "SETENTITYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY";
+        if(isset($_POST["entity"])){
+            $_SESSION["entityName"] = $_POST["entity"]; 
+            $_SESSION["entityCat"] = $_POST["category"];
+        }
+        
     }
 
     private function addTransaction() {
