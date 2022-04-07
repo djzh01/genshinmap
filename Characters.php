@@ -41,11 +41,11 @@
         </a>
 
 
-        <form action="?command=addtransaction" method="post" id="form1">
+        <form action="testfile.php" method="post" id="form1">
             <div class="text-center">
-            <input type="hidden" name="userid" value="<?=$_SESSION["id"]?>">
-            <?php $itemname = "Klee" ?>   
-                <button type="submit" class="btn btn-primary">Save Klee</button>
+            <input type="hidden" name="category" value="characters">
+            <input type="hidden" name="name" value="Diluc">
+                <button type="submit" class="btn btn-primary">Save Diluc</button>
             </div>
         </form>
     </div>
