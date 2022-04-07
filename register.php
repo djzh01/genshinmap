@@ -29,6 +29,7 @@ $db = new Database();
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if (!isset($_POST["email"]) || empty($_POST["email"])) $email_err = "Please enter valid email";
     if (!isset($_POST["username"]) || empty($_POST["username"])) $username_err = "Please enter username";
+    else if(!preg_match('/^[a-zA-Z0-9_]+$/', $_POST["username"])) $username_err = "Username can only contain letters, numbers, and underscores.";
     if (!isset($_POST["password"]) || empty($_POST["password"])) $password_err = "Please enter password";
     if (!isset($_POST["confirm_password"]) || empty($_POST["confirm_password"])) $confirm_password_err = "Please confirm password";
 

@@ -8,10 +8,10 @@ session_start();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta name="author" content="George Cao and Daniel Zhao">
     <meta name="description" content="Genshin Impact Archive">
     <meta name="keywords" content="Genshin Impact World Map Lore Archive Items">
+    <link rel="stylesheet/less" type="text/css" href="styles/sidebar.less" />
     <link rel="stylesheet/less" type="text/css" href="styles/styles.less" />
     <link rel="stylesheet/less" type="text/css" href="styles/map.less" />
     <script src="https://cdn.jsdelivr.net/npm/less@4"></script>
@@ -20,69 +20,22 @@ session_start();
 </head>
 
 <body>
-
     <div id="map">
         <div class="pos-f-t">
-            <nav style="z-index: 1;" class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand ml-1" href="#">TEYVAT MAP</a>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav w-100">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Teyvat
-                            </a>
-                            <ul id="teyvatDropdown" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="teyvat.html">
-                                        <img src="images/Elements/Anemo.png" alt="Anemo Symbol">
-                                        Mondstadt
-                                        <img src="images/RegionIcons/Mondstadt.png" alt="Mondstadt">
-                                    </a></li>
-                                <li><a class="dropdown-item" href="teyvat.html">
-                                        <img src="images/Elements/Geo.png" alt="Geo Symbol">
-                                        Liyue
-                                        <img src="images/RegionIcons/Liyue.png" alt="Liyue">
-                                    </a></li>
-                                <li><a class="dropdown-item" href="teyvat.html">
-                                        <img src="images/Elements/Electro.png" alt="Electro Symbol">
-                                        Inazuma
-                                        <img src="images/RegionIcons/Inazuma.png" alt="Inazuma">
-                                    </a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link active" href="enkanomiya.html">Enkanomiya</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Three Realms Gateway</a>
-                        </li>
-                        <?php
-                        if (isset($_SESSION["email"])) {
-                            echo "<li id='logout'><a class='nav-link' href='logout.php'>Logout</a></li>";
-                        }
-                        ?>
-
-                        <li id="profile" class="nav-item" style="<?php echo isset($_SESSION["email"]) ? "" : "margin-left: auto;" ?>">
-                            <a class="nav-link" href="profile.php">
-                                <div class="d-flex align-items-center">
-                                    <span>
-                                        My Profile
-                                    </span>
-
-                                    <img class="rounded-circle" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Profile picture">
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-            </nav>
-
+            <?php include 'utils/nav.php' ?>
+            <?php include 'utils/sidebar.php' ?>
         </div>
-        <img id="zoom" src="images/Enkanomiya_Map.jpg" alt="Enkanomiya" />
-
+        <div id="zoom">
+            <ul class="region-buttons">
+                <button id="mondstadt-btn" class="btn buttonround" onclick="openNav()"><img src="images/RegionIcons/Mondstadt.png" /></button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+                <li id="liyue-btn"><button><img src="images/RegionIcons/Liyue.png" /></button></li>
+                <li id="inazuma-btn"><button><img src="images/RegionIcons/Inazuma.png" /></button></li>
+            </ul>
+            <img id="zoom-img" src="images/Enkanomiya_Map.jpg" alt="Enkanomiya" />
+        </div>
     </div>
 
     <script src="scripts/script.js"></script>
