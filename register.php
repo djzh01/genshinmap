@@ -7,7 +7,7 @@ spl_autoload_register(function($classname) {
 });
 $db = new Database();
 // Register the autoloader
-if(isset($_SESSION['email'])) echo $_SESSION['email'];
+
 
 // // Parse the query string for command
 // $command = "login";
@@ -30,23 +30,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if (!isset($_POST["email"]) || empty($_POST["email"])) $email_err = "Please enter valid email";
     if (!isset($_POST["username"]) || empty($_POST["username"])) $username_err = "Please enter username";
     if (!isset($_POST["password"]) || empty($_POST["password"])) $password_err = "Please enter password";
+    if (!isset($_POST["confirm_password"]) || empty($_POST["confirm_password"])) $confirm_password_err = "Please confirm password";
 
-    if(empty($email_err) && empty($username_err) && empty($password_err)){
+    if(empty($email_err) && empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         $data = $db->query("select * from genshin_user where email = ?;", "s", $_POST["email"]);
-        if ($data === false) $login_err = "Could not find account linked to this email. Please register below";
-        else if (!empty($data)) {
-            if($data[0]["username"] === $_POST["username"]){
-                if (password_verify($_POST["password"], $data[0]["password"])) {
-                    $_SESSION["username"] = $data[0]["username"];
-                    $_SESSION["email"] = $data[0]["email"];
-                    $_SESSION["id"] = $data[0]["id"];
-                    header("Location: profile.php");
-                } else {
-                    $login_err = "Wrong password";
-                }
-            }
-            else{
-                $login_err = "Name doesn't correlate to email.";
+        if($data != false){
+            echo $data[0]['email'];
+            $registration_err = "Account with this email already exists";
+        }
+        else if($_POST["confirm_password"] != $_POST["password"]){
+            $password_match_err = "Passwords did not match";
+        }
+        else{
+            $insert = $db->query("insert into genshin_user (username, email, password) values (?, ?, ?);", 
+                        "sss", $_POST["username"], $_POST["email"], 
+                        password_hash($_POST["password"], PASSWORD_DEFAULT));
+            if (!$insert) {
+                $registration_err = "Error inserting user";
+            } else {
+                $data = $db->query("select id from genshin_user where email = ?;", "s", $_POST["email"]);
+                $_SESSION["id"] = $data[0]["id"];
+                $_SESSION["username"] = $_POST["username"];
+                $_SESSION["email"] = $_POST["email"];
+                header("Location: teyvat.php");
             }
         }
     }
@@ -63,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <meta name="author" content="CS4640">
         <meta name="description" content="CS4640 Trivia Login Page">  
 
-        <title>Genshin Map Login</title>
+        <title>Register New Account</title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
     </head>
@@ -71,8 +77,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <body>
 
         <?php 
-        if(!empty($login_err)){
-            echo '<div class="alert alert-danger">' . $login_err . '</div>';
+        if(!empty($registration_err)){
+            echo '<div class="alert alert-danger">' . $registration_err . '</div>';
         }        
         ?>
         <div class="container" style="margin-top: 15px;">
@@ -97,13 +103,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <input type="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" id="password" name="password"/>
                         <span class="invalid-feedback"><?php echo $password_err; ?></span>
                     </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control <?php echo (!empty($confirm_password_err) || !empty($password_match_err)) ? 'is-invalid' : ''; ?>" id="confirm_password" name="confirm_password"/>
+                        <span class="invalid-feedback"><?php if(!empty($confirm_password_err)) echo $confirm_password_err; ?></span>
+                        <span class="invalid-feedback"><?php if(!empty($password_match_err)) echo $password_match_err; ?></span>
+                    </div>
                     <div class="text-center">                
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary">Register</button>
                     </div>
                 </form>
-                <form action="register.php" method="post" class="mt-3">
+                <form action="login.php" method="post" class="mt-3">
                     <div class="text-center">                
-                        <button type="submit" class="btn btn-outline-primary">Register</button>
+                        <button type="submit" class="btn btn-outline-primary">Login</button>
                     </div>
                 </form>
                 </div>

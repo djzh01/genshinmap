@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +62,7 @@
               <a class="nav-link" href="#">Three Realms Gateway</a>
             </li>
             <li id="profile" class="nav-item">
-              <a class="nav-link" href="loginindex.php">
+              <a class="nav-link" href="profile.php">
                 <div class="d-flex align-items-center">
                   <span>
                     My Profile
