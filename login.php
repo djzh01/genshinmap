@@ -6,26 +6,7 @@ spl_autoload_register(function($classname) {
     include "$classname.php";
 });
 $db = new Database();
-// Register the autoloader
-if(isset($_SESSION['email'])) echo $_SESSION['email'];
 
-// // Parse the query string for command
-// $command = "login";
-// if (isset($_GET["command"]))
-//     $command = $_GET["command"];
-
-// // If the user's email is not set in the cookies, then it's not
-// // a valid session (they didn't get here from the login page),
-// // so we should send them over to log in first before doing
-// // anything else!
-// if (!isset($_SESSION["email"])) {
-//     // they need to see the login
-//     $command = "login";
-// }
-
-// // Instantiate the controller and run
-// $finance = new FinanceController($command);
-// $finance->run();
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if (!isset($_POST["email"]) || empty($_POST["email"])) $email_err = "Please enter valid email";
     if (!isset($_POST["username"]) || empty($_POST["username"])) $username_err = "Please enter username";
@@ -46,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 }
             }
             else{
-                $login_err = "Name doesn't correlate to email.";
+                $login_err = "Username invalid for this email.";
             }
         }
     }
@@ -101,7 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <button type="submit" class="btn btn-primary">Login</button>
                     </div>
                 </form>
-                <form action="register.php" method="post" class="mt-3">
+                <form action="register.php" method="get" class="mt-3">
                     <div class="text-center">                
                         <button type="submit" class="btn btn-outline-primary">Register</button>
                     </div>

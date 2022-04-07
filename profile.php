@@ -1,7 +1,27 @@
 <?php
 session_start();
-if (!isset($_SESSION["email"])) {
+spl_autoload_register(function($classname) {
+    include "$classname.php";
+});
+$db = new Database();
+
+if (!isset($_SESSION["id"])) {
     header("Location: login.php");
+}
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if(!isset($_POST["username"])) {
+        $username_err = "Please enter username.";
+    }
+    else{
+        $data = $db->query("UPDATE genshin_user SET username = ? WHERE id = ?;", "si", $_POST["username"], $_SESSION["id"]);
+        if($data === false){
+            $err_msg = "Could not update username.";
+        }
+        else{
+            $_SESSION["username"] = $_POST["username"];
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -24,7 +44,11 @@ if (!isset($_SESSION["email"])) {
 </head>
 
 <body>
-
+<?php 
+        if(!empty($username_err)){
+            echo '<div class="alert alert-danger">' . $username_err . '</div>';
+        }        
+        ?>
     <div class="pos-f-t">
     <?php include 'utils/nav.php'?>
     </div>
@@ -35,11 +59,14 @@ if (!isset($_SESSION["email"])) {
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Profile picture">
                     <span class="font-weight-bold">
-                        <?= $_SESSION["username"] ?>
+                        <?= ucfirst($_SESSION["username"]) ?>
                     </span>
-                    <span>
-                        <label>Change Username</label><input type="text" name="username" class="form-control" value="" placeholder="username">
-                    </span>
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                        <label for="email" class="form-label mt-3">Change Username</label>
+                        <input type="text" class="form-control mt-3 <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" id="username" name="username"/>
+                        <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                        <button type="submit" class="btn btn-outline-primary mt-3 w-100">Submit</button>
+                    </form>
                 </div>
             </div>
             <div class="col-md-8">
@@ -87,23 +114,6 @@ if (!isset($_SESSION["email"])) {
 
                 </ul>
             </div>
-            <!-- <form action="updateProfile.php" method="post" class="col-md-5 border-right">
-                <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Profile Settings</h4>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6">
-                            <label>First Name</label>
-                            <input type="text" class="form-control" name="fname" placeholder="first name"
-                                value="">
-                        </div>
-                        <div class="col-md-6"><label>Last Name</label><input type="text" name="lname"
-                                class="form-control" value="" placeholder="last name">
-                        </div>
-                    </div>
-                </div>
-            </form> -->
         </div>
 
     </div>
