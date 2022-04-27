@@ -3,29 +3,10 @@
 <?php
 session_start();
 spl_autoload_register(function($classname) {
-    include "$classname.php";
+    include "classes/$classname.php";
 });
 $db = new Database();
-// Register the autoloader
-if(isset($_SESSION['email'])) echo $_SESSION['email'];
 
-// // Parse the query string for command
-// $command = "login";
-// if (isset($_GET["command"]))
-//     $command = $_GET["command"];
-
-// // If the user's email is not set in the cookies, then it's not
-// // a valid session (they didn't get here from the login page),
-// // so we should send them over to log in first before doing
-// // anything else!
-// if (!isset($_SESSION["email"])) {
-//     // they need to see the login
-//     $command = "login";
-// }
-
-// // Instantiate the controller and run
-// $finance = new FinanceController($command);
-// $finance->run();
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if (!isset($_POST["email"]) || empty($_POST["email"])) $email_err = "Please enter valid email";
     if (!isset($_POST["username"]) || empty($_POST["username"])) $username_err = "Please enter username";
@@ -46,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 }
             }
             else{
-                $login_err = "Name doesn't correlate to email.";
+                $login_err = "Username invalid for this email.";
             }
         }
     }
@@ -64,12 +45,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <meta name="description" content="CS4640 Trivia Login Page">  
 
         <title>Genshin Map Login</title>
+        <link rel="stylesheet/less" type="text/css" href="styles/styles.less" />
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
+        <script src="https://cdn.jsdelivr.net/npm/less@4"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
     <body>
-
+        <?php include 'utils/nav.php' ?>
         <?php 
         if(!empty($login_err)){
             echo '<div class="alert alert-danger">' . $login_err . '</div>';
@@ -101,7 +84,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <button type="submit" class="btn btn-primary">Login</button>
                     </div>
                 </form>
-                <form action="register.php" method="post" class="mt-3">
+                <form action="register.php" method="get" class="mt-3">
                     <div class="text-center">                
                         <button type="submit" class="btn btn-outline-primary">Register</button>
                     </div>

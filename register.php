@@ -3,40 +3,21 @@
 <?php
 session_start();
 spl_autoload_register(function($classname) {
-    include "$classname.php";
+    include "classes/$classname.php";
 });
 $db = new Database();
-// Register the autoloader
 
-
-// // Parse the query string for command
-// $command = "login";
-// if (isset($_GET["command"]))
-//     $command = $_GET["command"];
-
-// // If the user's email is not set in the cookies, then it's not
-// // a valid session (they didn't get here from the login page),
-// // so we should send them over to log in first before doing
-// // anything else!
-// if (!isset($_SESSION["email"])) {
-//     // they need to see the login
-//     $command = "login";
-// }
-
-// // Instantiate the controller and run
-// $finance = new FinanceController($command);
-// $finance->run();
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    if (!isset($_POST["email"]) || empty($_POST["email"])) $email_err = "Please enter valid email";
-    if (!isset($_POST["username"]) || empty($_POST["username"])) $username_err = "Please enter username";
+    if (!isset($_POST["email"]) || empty($_POST["email"])) $email_err = "Please enter email.";
+    else if(!preg_match('/^[\w\d_+-]+\.*[\w\d_+-]+@(?:[\w\d-]+\.)+[\w\d]+$/', $_POST["email"])) $email_err = "Please enter valid email.";
+    if (!isset($_POST["username"]) || empty($_POST["username"])) $username_err = "Please enter username.";
     else if(!preg_match('/^[a-zA-Z0-9_]+$/', $_POST["username"])) $username_err = "Username can only contain letters, numbers, and underscores.";
-    if (!isset($_POST["password"]) || empty($_POST["password"])) $password_err = "Please enter password";
-    if (!isset($_POST["confirm_password"]) || empty($_POST["confirm_password"])) $confirm_password_err = "Please confirm password";
+    if (!isset($_POST["password"]) || empty($_POST["password"])) $password_err = "Please enter password.";
+    if (!isset($_POST["confirm_password"]) || empty($_POST["confirm_password"])) $confirm_password_err = "Please confirm password.";
 
     if(empty($email_err) && empty($username_err) && empty($password_err) && empty($confirm_password_err)){
-        $data = $db->query("select * from genshin_user where email = ?;", "s", $_POST["email"]);
+        $data = $db->query("SELECT * FROM genshin_user WHERE email = ?;", "s", $_POST["email"]);
         if($data != false){
-            echo $data[0]['email'];
             $registration_err = "Account with this email already exists";
         }
         else if($_POST["confirm_password"] != $_POST["password"]){
@@ -72,15 +53,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         <title>Register New Account</title>
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
+        <link rel="stylesheet/less" type="text/css" href="styles/styles.less" />
+        
+        <script src="https://cdn.jsdelivr.net/npm/less@4"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
     <body>
+        <?php include 'utils/nav.php' ?>
 
         <?php 
         if(!empty($registration_err)){
             echo '<div class="alert alert-danger">' . $registration_err . '</div>';
-        }        
+        }
         ?>
         <div class="container" style="margin-top: 15px;">
             <div class="row col-xs-8 text-center">
@@ -114,7 +99,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <button type="submit" class="btn btn-primary">Register</button>
                     </div>
                 </form>
-                <form action="login.php" method="post" class="mt-3">
+                <form action="login.php" method="get" class="mt-3">
                     <div class="text-center">                
                         <button type="submit" class="btn btn-outline-primary">Login</button>
                     </div>
