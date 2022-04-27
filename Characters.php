@@ -6,7 +6,7 @@ spl_autoload_register(function ($classname) {
 $db = new Database();
 if (!isset($_GET['name']) || empty($_GET['name'])) $name_err = "Character name required";
 
-$data = $db->query("select * from genshin_character NATURAL join genshin_entity where name = ?", "s", $_GET["name"]);
+$data = $db->query("select * from genshin_character JOIN genshin_entity on genshin_character.entity_id = genshin_entity.id where name=?", "s", $_GET["name"]);
 
 if ($data === false) {
   $err_msg = "Could not find character of that name";
@@ -146,7 +146,7 @@ if ($data === false) {
     <div class="text-center">
       <input type="hidden" name="category" value="characters">
       <input type="hidden" name="name" value="Diluc">
-      <button onclick="myFunction()" type="submit" class="btn btn-primary">Save Diluc</button>
+      <button onclick="myFunction()" type="submit" class="btn btn-primary">Save <?=$data[0]['name']?></button>
     </div>
     <script>
       function add() {
@@ -160,9 +160,9 @@ if ($data === false) {
 
         };  
       
-      function myFunction() {
-        alert("I am an alert box!");
-      }
+      // function myFunction() {
+      //   alert("I am an alert box!");
+      // }
     </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

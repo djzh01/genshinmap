@@ -23,8 +23,14 @@ $db = new Database();
                                 <br>
                                 <iframe src="./Characters.php?name=Diluc Ragnvindr" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
                             </div>
-                            <div id="overlay"></div>
                             <button class="btn btn-outline text-white w-100" onclick="on()" id="entity" type="submit" name="name" value="Diluc">Diluc Ragnvindr</button>
+                        </li>
+                        <li class="list-group-item bg-dark">
+                            <div id="overlay2" onclick="off2()">
+                                <br>
+                                <iframe src="./Characters.php?name=Jean Gunnhildr" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
+                            </div>
+                            <button class="btn btn-outline text-white w-100" onclick="on2()" id="entity2" type="submit" name="name" value="Diluc">Jean Gunnhildr</button>
                         </li>
                     </ul>
                 </div>
