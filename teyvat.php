@@ -38,7 +38,7 @@ session_start();
         <li id="liyue-btn"><button><img src="images/RegionIcons/Liyue.png" /></button></li>
         <li id="inazuma-btn"><button><img src="images/RegionIcons/Inazuma.png" /></button></li>
       </ul>
-      <img id="zoom-img" src="images/teyvatmap.png" alt="Teyvat" />
+      <img id="zoom-img" src="images/Teyvat.jpg" alt="Teyvat" />
     </div>
 
 
