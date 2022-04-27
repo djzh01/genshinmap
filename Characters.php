@@ -1,6 +1,6 @@
 <?php
-        include("Database.php");
-        session_start();
+        require_once("Database.php");
+        //session_start();
         
         $db = new Database();?>
 <!DOCTYPE html>
@@ -26,13 +26,18 @@
 <body>
 <?php
 
-$data = $db->query("select * from genshin_characters where name = 'Diluc'");
+$data = $db->query("select * from genshin_character NATURAL join genshin_entity where name = 'Diluc'");
+
+
+
 if ($data) {
     echo $data[0]['normalgif'];
 }
 else{
     echo "rip";
 }
+
+echo $_POST['name']
 ?>
 
 
@@ -151,15 +156,37 @@ else{
             <div class="text-center">
             <input type="hidden" name="category" value="characters">
             <input type="hidden" name="name" value="Diluc">
-                <button type="submit" class="btn btn-primary">Save Diluc</button>
+                <button onclick="myFunction()" type="submit" class="btn btn-primary">Save Diluc</button>
             </div>
         </form>
+
+
         <?php 
         $error_msg = "";
         echo $error_msg; ?>
+
+        <button class="btn btn-primary" onclick="myFunction();">Submit</button>
+
     </div>
 
     </div>
+    <script>
+      function add() {
+        //alert("bruh");
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "testfile.php", true);
+        ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        ajax.send("category=characters&name=Diluc");
+
+        alert("success");
+
+        });  
+      }
+      function myFunction() {
+        alert("I am an alert box!");
+      }
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

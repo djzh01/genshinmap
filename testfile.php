@@ -1,5 +1,5 @@
 <?php
-include("Database.php");
+require_once("Database.php");
 session_start();
 
 $db = new Database();
