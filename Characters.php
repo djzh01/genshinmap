@@ -146,7 +146,8 @@ if ($data === false) {
     <div class="text-center">
       <input type="hidden" name="category" value="characters">
       <input type="hidden" name="name" value="Diluc">
-      <button onclick="myFunction()" type="submit" class="btn btn-primary">Save <?=$data[0]['name']?></button>
+      <input type="hidden" name="entity_id" value=<?php echo $data[0]['entity_id'] ?>>
+      <button type="submit" class="btn btn-primary">Save <?=$data[0]['name'] ?></button>
     </div>
     <script>
       function add() {

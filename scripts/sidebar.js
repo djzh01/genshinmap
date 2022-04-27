@@ -24,10 +24,7 @@ function on2() {
   http.send('name='+name);
 }
 
-function off() {
-  //var http = new XMLHttpRequest();
-  //http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-  //http.send('orem=ipsum');
+function off2() {
     document.getElementById("overlay").style.display = "none";
     
 
@@ -60,3 +57,4 @@ var closeNav =function() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
 }
+
