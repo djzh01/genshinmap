@@ -114,3 +114,4 @@ backdrop.ontouchmove = function (e) {
   pointY = (e.touches[0].clientY - start.y);
   setTransform();
 }
+
