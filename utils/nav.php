@@ -2,7 +2,7 @@
     <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand ml-1" href="#">TEYVAT MAP</a>
+    <a class="navbar-brand ml-1" href="../teyvat.php">TEYVAT MAP</a>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100">
             <li class="nav-item dropdown active">

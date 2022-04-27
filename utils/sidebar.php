@@ -3,15 +3,21 @@
     <a href="#">About</a>
     <a href="#">Services</a>
     <li>
+
         <div id="overlay" onclick="off()">
             <br>
-            <iframe src="./Characters.php" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
+            <iframe src="./Characters.php?name=Diluc" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
         </div>
         <div id="overlay"></div>
 
-        <button onclick="on()" type="submit">Dilucc</button>
+        <button onclick="on()" id="entity" type="submit" name="name" value="Diluc">Dilucc</button>
+
+        
+
 
     </li>
+
+    
     <li>
         <div id="overlay" onclick="off()">
             <br>
