@@ -1,8 +1,19 @@
 function on() {
-    document.getElementById("overlay").style.display = "block";
+  var buttonValue = document.getElementById('button').value;
+    document.getElementById(buttonValue).style.display = "block";
 }
 
 function off() {
+   var buttonValue = document.getElementById('button').value;
+    document.getElementById(buttonValue).style.display = "none";
+  }
+
+function on2() {
+    console.log('hi');
+    document.getElementById("overlay").style.display = "block";
+}
+
+function off2() {
     document.getElementById("overlay").style.display = "none";
   }
 
@@ -17,3 +28,4 @@ function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
 }
+
