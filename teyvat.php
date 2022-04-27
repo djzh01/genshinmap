@@ -16,8 +16,20 @@ session_start();
   <link rel="stylesheet/less" type="text/css" href="styles/styles.less" />
   <link rel="stylesheet/less" type="text/css" href="styles/map.less" />
   <script src="https://cdn.jsdelivr.net/npm/less@4"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <title>Teyvationary</title>
+  <script type=text/javascript>
+    $(document).ready(function(e) {
+      console.log($(".region-buttons button"));
+      $(".region-buttons button").each(function() {
+        $(this).click(function(e) {
+            var region = $(this).val();
+            
+        });
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -25,18 +37,19 @@ session_start();
   <div id="map">
     <div class="pos-f-t">
       <?php include 'utils/nav.php' ?>
-      <?php include 'utils/sidebar.php' ?>      
+      <?php include 'utils/sidebar.php' ?>
     </div>
     <div id="zoom">
       <ul class="region-buttons">
-        <button id="mondstadt-btn" class="btn buttonround" onclick="openNav()"><img src="images/RegionIcons/Mondstadt.png" /></button>
-
-        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-align-justify"></i>
-        </button>
-        <!-- <li id="mondstadt-btn"><button><img src="images/RegionIcons/Mondstadt.png"/></button></li> -->
-        <li id="liyue-btn"><button><img src="images/RegionIcons/Liyue.png" /></button></li>
-        <li id="inazuma-btn"><button><img src="images/RegionIcons/Inazuma.png" /></button></li>
+        <li>
+          <button id="mondstadt-btn" class="btn buttonround" onclick="openNav('Mondstadt')" value="Mondstadt"><img src="images/RegionIcons/Mondstadt.png" /></button>
+        </li>
+        <li>
+          <button id="liyue-btn" class="btn buttonround" value="Liyue"><img src="images/RegionIcons/Liyue.png" /></button>
+        </li>
+        <li>
+          <button id="inazuma-btn" class="btn buttonround" value="Inazuma"><img src="images/RegionIcons/Inazuma.png" /></button>
+        </li>
       </ul>
       <img id="zoom-img" src="images/Teyvat.jpg" alt="Teyvat" />
     </div>

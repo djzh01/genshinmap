@@ -87,8 +87,8 @@ foreach ($data as $key => $val) {
 
                         echo '<li>';
                         if($bookmark['type'] === 'character') echo "<a href='characters.php?name=$name' data-char='$name'>";
-                        else if($bookmark['type'] === 'item') echo "<a href='items.php' data-char='$name'>";
-                        else if($bookmark['type'] === 'enemy') echo "<a href='enemies.php' data-char='$name'>";
+                        else if($bookmark['type'] === 'item') echo "<a href='items.php?name=$name' data-char='$name'>";
+                        else if($bookmark['type'] === 'enemy') echo "<a href='enemies.php?name=$name' data-char='$name'>";
                         echo "<img src='$thumbnail' alt='$name' class='rounded'>";
                         echo "<p class='text-center text-uppercase fw-light'>$name</p>";
                         echo "</a>";

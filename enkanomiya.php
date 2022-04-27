@@ -26,14 +26,6 @@ session_start();
             <?php include 'utils/sidebar.php' ?>
         </div>
         <div id="zoom">
-            <ul class="region-buttons">
-                <button id="mondstadt-btn" class="btn buttonround" onclick="openNav()"><img src="images/RegionIcons/Mondstadt.png" /></button>
-                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-align-justify"></i>
-                </button>
-                <li id="liyue-btn"><button><img src="images/RegionIcons/Liyue.png" /></button></li>
-                <li id="inazuma-btn"><button><img src="images/RegionIcons/Inazuma.png" /></button></li>
-            </ul>
             <img id="zoom-img" src="images/Enkanomiya_Map.jpg" alt="Enkanomiya" />
         </div>
     </div>

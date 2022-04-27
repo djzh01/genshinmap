@@ -43,8 +43,16 @@ $db = new Database();
                 </button>
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <div class="accordion-body p-0">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-dark">
+                            <div id="overlay3" onclick="off3()">
+                                <br>
+                                <iframe src="./Enemies.php?name=Ruin Guard" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
+                            </div>
+                            <button class="btn btn-outline text-white w-100" onclick="on3()" id="entity3" type="submit" name="name" value="Ruin Guard">Ruin Guard</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -56,7 +64,15 @@ $db = new Database();
             </h2>
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-dark">
+                            <div id="overlay4" onclick="off4()">
+                                <br>
+                                <iframe src="./Items.php?name=Skyward Blade" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
+                            </div>
+                            <button class="btn btn-outline text-white w-100" onclick="on4()" id="entity3" type="submit" name="name" value="Ruin Guard">Skyward Blade</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
