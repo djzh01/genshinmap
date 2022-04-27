@@ -3,7 +3,7 @@
 <?php
 session_start();
 spl_autoload_register(function($classname) {
-    include "$classname.php";
+    include "classes/$classname.php";
 });
 $db = new Database();
 
@@ -45,12 +45,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <meta name="description" content="CS4640 Trivia Login Page">  
 
         <title>Genshin Map Login</title>
+        <link rel="stylesheet/less" type="text/css" href="styles/styles.less" />
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
+        <script src="https://cdn.jsdelivr.net/npm/less@4"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
     <body>
-
+        <?php include 'utils/nav.php' ?>
         <?php 
         if(!empty($login_err)){
             echo '<div class="alert alert-danger">' . $login_err . '</div>';
