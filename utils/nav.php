@@ -1,12 +1,12 @@
-<nav style="z-index: 10;" class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav style="z-index: 10;" class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
     <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand ml-1" href="../teyvat.php">TEYVAT MAP</a>
+    <a class="navbar-brand ml-1" href="./teyvat.php">TEYVAT MAP</a>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100">
-            <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Teyvat
                 </a>
                 <ul id="teyvatDropdown" class="dropdown-menu" aria-labelledby="navbarDropdown">
