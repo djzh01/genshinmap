@@ -21,14 +21,14 @@ $db = new Database();
                         <li class="list-group-item bg-dark">
                             <div id="overlay" onclick="off()">
                                 <br>
-                                <iframe src="./Characters.php?name=Diluc Ragnvindr" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
+                                <iframe src="./characters.php?name=Diluc Ragnvindr" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
                             </div>
                             <button class="btn btn-outline text-white w-100" onclick="on()" id="entity" type="submit" name="name" value="Diluc">Diluc Ragnvindr</button>
                         </li>
                         <li class="list-group-item bg-dark">
                             <div id="overlay2" onclick="off2()">
                                 <br>
-                                <iframe src="./Characters.php?name=Jean Gunnhildr" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
+                                <iframe src="./characters.php?name=Jean Gunnhildr" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
                             </div>
                             <button class="btn btn-outline text-white w-100" onclick="on2()" id="entity2" type="submit" name="name" value="Diluc">Jean Gunnhildr</button>
                         </li>
@@ -48,7 +48,7 @@ $db = new Database();
                         <li class="list-group-item bg-dark">
                             <div id="overlay3" onclick="off3()">
                                 <br>
-                                <iframe src="./Enemies.php?name=Ruin Guard" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
+                                <iframe src="./enemies.php?name=Ruin Guard" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
                             </div>
                             <button class="btn btn-outline text-white w-100" onclick="on3()" id="entity3" type="submit" name="name" value="Ruin Guard">Ruin Guard</button>
                         </li>
@@ -68,7 +68,7 @@ $db = new Database();
                         <li class="list-group-item bg-dark">
                             <div id="overlay4" onclick="off4()">
                                 <br>
-                                <iframe src="./Items.php?name=Skyward Blade" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
+                                <iframe src="./items.php?name=Skyward Blade" onload="this.width=window.innerWidth*0.8;this.height=window.innerHeight*0.8;" class="mt-5"></iframe>
                             </div>
                             <button class="btn btn-outline text-white w-100" onclick="on4()" id="entity3" type="submit" name="name" value="Ruin Guard">Skyward Blade</button>
                         </li>

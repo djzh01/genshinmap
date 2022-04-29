@@ -4,12 +4,14 @@ spl_autoload_register(function ($classname) {
     include "classes/$classname.php";
 });
 $db = new Database();
-if (!isset($_GET['name']) || empty($_GET['name'])) $name_err = "Character name required";
-
+if (!isset($_GET['name']) || empty($_GET['name'])) return $err_msg = "Enemy name required";
 $data = $db->query("select * from genshin_item JOIN genshin_entity on genshin_item.entity_id = genshin_entity.id where name=?", "s", $_GET["name"]);
 
+
 if ($data === false) {
-    $err_msg = "Could not find character of that name";
+    $err_msg = "Error querying entity.";
+} else if (empty($data[0])) {
+    $err_msg = "Could not find item of that name";
 }
 ?>
 <!DOCTYPE html>
@@ -34,60 +36,52 @@ if ($data === false) {
 
 <body>
     <?php include 'utils/nav.php' ?>
-    <div class="container rounded bg-white mt-5 mb-5">
-        <h1 class="center text-center"><?php echo $data[0]['name'] ?></h1>
-        <div class="row">
-
-            <a href="#" class="col-md-8 mx-auto d-flex">
-                <img src="<?php echo $data[0]['image'] ?>" alt="bookmark" class="mx-auto" style="border-radius: 50%; height: 50vh; width: 35vw" />
-            </a>
-
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-8 mx-auto d-flex">
-                <h2 style="text-align: center; font-style: italic; font-family: 'Courier New', monospace; " class="center"><?php echo $data[0]['overview'] ?></h2>
+    <?php if (!isset($err_msg)) : ?>
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row justify-content-center">
+                <form action="save_entity.php" id="saveform" class="col-6 justify-content-center d-flex">
+                    <h1 class="fw-bold d-inline-block mx-3">
+                        <?php echo $data[0]['name'] ?>
+                    </h1>
+                    <input type="hidden" name="entity_id" id="entity_id" value=<?php echo $data[0]['entity_id'] ?>>
+                    <button type="submit" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+                            <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z" />
+                        </svg>Bookmark</button>
+                </form>
             </div>
-        </div>
+            <div id="msg"></div>
+            <div class="row">
 
-        <div class="row">
-            <div class="col-md-8 mx-auto d-flex">
-                <video width=100% autoplay loop>
-                    <source src="<?php echo $data[0]['preview'] ?>" type="video/ogg">
-                </video>
+                <a href="#" class="col-md-8 mx-auto d-flex">
+                    <img src="<?php echo $data[0]['image'] ?>" alt="bookmark" class="mx-auto" style="border-radius: 50%; height: 50vh; width: 35vw" />
+                </a>
+
             </div>
-        </div>
-        <hr>
-        <form action="testfile.php" method="post" id="form1">
-            <div class="text-center">
-                <input type="hidden" name="entity_id" value=<?= $data[0]['entity_id'] ?>>
-                <button onclick="myFunction()" type="submit" class="btn btn-primary">Save <?= $data[0]['name'] ?></button>
+            <br>
+            <div class="row">
+                <div class="col-md-8 mx-auto d-flex">
+                    <h2 style="text-align: center; font-style: italic; font-family: 'Courier New', monospace; " class="center"><?php echo $data[0]['overview'] ?></h2>
+                </div>
             </div>
-        </form>
+
+            <div class="row">
+                <div class="col-md-8 mx-auto d-flex">
+                    <video width=100% autoplay loop>
+                        <source src="<?php echo $data[0]['preview'] ?>" type="video/ogg">
+                    </video>
+                </div>
+            </div>
+            <hr>
+        </div>
+    <?php else : ?>
+        <h1 class="text-center"><?= $err_msg ?></h1>
+    <?php endif; ?>
 
 
-        <?php
-        $error_msg = "";
-        echo $error_msg; ?>
-
-
-    </div>
-    <script>
-        function add() {
-            //alert("bruh");
-            var ajax = new XMLHttpRequest();
-            ajax.open("POST", "testfile.php", true);
-            ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            ajax.send("category=characters&name=Diluc");
-
-            alert("success");
-        };
-    </script>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="scripts/save.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
